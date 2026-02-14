@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Valentine’s Adventure</title>
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fef6f6;
+            color: #333;
+            line-height: 1.5;
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+            color: #a00030;
+            margin-top: 0;
+        }
+        a { color: #a00030; }
+        /* Header */
+        .hero {
+            background: url("3f9c178e-fe2d-4552-bb2c-9a5f1f673fb0.png") no-repeat center/cover;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .hero h1 {
+            position: relative;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            position: relative;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* Timeline */
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: #f5c6d6;
+            z-index: 0;
+        }
+        .timeline-step {
+            position: relative;
+            text-align: center;
+            margin: 0 20px;
+        }
+        .timeline-step .dot {
+            width: 16px;
+            height: 16px;
+            background: #a00030;
+            border-radius: 50%;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        .timeline-step span {
+            display: block;
+            font-size: 0.9rem;
+            color: #a00030;
+        }
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 40px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.2rem;
+            margin: 0 0 8px 0;
+            color: #a00030;
+        }
+        .card-text {
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 16px;
+            background: #a00030;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .btn:hover {
+            background: #870026;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            padding: 20px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #a00030;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f5e0e6;
+            margin-top: 30px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>Will you be my Valentine?</h1>
+        <p>I’ve planned the sweetest weekend just for us — a celebration of our love ❤️</p>
+    </header>
+
+    <section class="timeline">
+        <div class="timeline-step">
+            <div class="dot"></div>
+            <span>6:00 PM<br>Feb 14th</span>
+        </div>
+        <div class="timeline-step">
+            <div class="dot"></div>
+            <span>Fun Evening</span>
+        </div>
+        <div class="timeline-step">
+            <div class="dot"></div>
+            <span>Romantic Dinner</span>
+        </div>
+        <div class="timeline-step">
+            <div class="dot"></div>
+            <span>Winter Park</span>
+        </div>
+        <div class="timeline-step">
+            <div class="dot"></div>
+            <span>Feb 15th<br>10:00 PM</span>
+        </div>
+    </section>
+
+    <!-- Day One cards -->
+    <h2 style="text-align:center">Valentine’s Day: February 14, 2026</h2>
+    <div class="cards-container">
+        <!-- Fireworks & Flannels Card -->
+        <div class="card" onclick="openModal('modal1')">
+            <img src="3f9c178e-fe2d-4552-bb2c-9a5f1f673fb0.png" alt="Fireworks & Flannels" />
+            <div class="card-body">
+                <h3 class="card-title">Fireworks & Flannels Cozy Night Out</h3>
+                <p class="card-text">We’ll bundle up in flannel, ride in a horse‑drawn wagon and watch fireworks light up the night — I can’t wait to hold your hand through it all.</p>
+                <button class="btn">View Details</button>
+            </div>
+        </div>
+        <!-- Romantic Dinner Card -->
+        <div class="card" onclick="openModal('modal2')">
+            <img src="6f13b580-b49c-4ba2-a62a-8337415779f1.png" alt="Romantic Dinner" />
+            <div class="card-body">
+                <h3 class="card-title">Romantic Dinner</h3>
+                <p class="card-text">I’ve booked us a table at a cozy restaurant I know you’ll love — we’ll share bites, laugh and toast to us.</p>
+                <button class="btn">View Details</button>
+            </div>
+        </div>
+        <!-- Winter Park Card -->
+        <div class="card" onclick="openModal('modal3')">
+            <img src="1f2ccacd-d794-4e64-98dd-8e13e1c3010b.png" alt="Bowers Farm Winter Park" />
+            <div class="card-body">
+                <h3 class="card-title">Bowers Farm Winter Park</h3>
+                <p class="card-text">We’ll laugh our way down a glowing tubing hill, roast marshmallows and meet friendly farm animals — just us soaking up winter magic.</p>
+                <button class="btn">View Details</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day Two cards -->
+    <h2 style="text-align:center">Valentine’s Day 2: February 15, 2026</h2>
+    <div class="cards-container">
+        <!-- Breakfast in Bed -->
+        <div class="card" onclick="openModal('modal4')">
+            <img src="356a055c-bc51-47d6-88ed-5ff9d5dc7d0d.png" alt="Breakfast in Bed" />
+            <div class="card-body">
+                <h3 class="card-title">Breakfast in Bed</h3>
+                <p class="card-text">I’ll wake you with homemade pancakes, coffee and a single rose — because you deserve the sweetest start to our day.</p>
+                <button class="btn">View Details</button>
+            </div>
+        </div>
+        <!-- Facial -->
+        <div class="card" onclick="openModal('modal5')">
+            <img src="3d138db7-93fa-473f-9e1d-d4a9e9b33f2a.png" alt="Relaxing Facial" />
+            <div class="card-body">
+                <h3 class="card-title">Relaxing Facial</h3>
+                <p class="card-text">You deserve to be pampered — I’m treating you to a soothing facial because you’re my queen.</p>
+                <button class="btn">View Details</button>
+            </div>
+        </div>
+        <!-- Shopping Spree -->
+        <div class="card" onclick="openModal('modal6')">
+            <img src="f5707c04-c1a1-46b2-a7c8-787cebddc0a5.png" alt="Shopping Spree" />
+            <div class="card-body">
+                <h3 class="card-title">Shopping Spree</h3>
+                <p class="card-text">Let’s wander our favorite shops and maybe pick out something special to remember this weekend forever.</p>
+                <button class="btn">View Details</button>
+            </div>
+        </div>
+        <!-- Movie & Dinner Card -->
+        <div class="card" onclick="openModal('modal7')">
+            <img src="6f13b580-b49c-4ba2-a62a-8337415779f1.png" alt="Movie and Dinner" />
+            <div class="card-body">
+                <h3 class="card-title">Movie & Dinner</h3>
+                <p class="card-text">We’ll snuggle through a movie and finish the day with another delicious meal — there’s nothing better than being with you.</p>
+                <button class="btn">View Details</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Fireworks modal -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal1')">×</span>
+            <img src="3f9c178e-fe2d-4552-bb2c-9a5f1f673fb0.png" alt="Fireworks & Flannels" />
+            <h3>Fireworks &amp; Flannels Cozy Night Out</h3>
+            <p><strong>Date:</strong> February 14, 2026 | 4:00 PM – 8:00 PM</p>
+            <p><strong>Location:</strong> Waterford Oaks County Park, 1702 Scott Lake Rd., Waterford, MI</p>
+            <p>I can’t wait to wrap up in flannel with you and enjoy an evening of pure winter magic together.  I’ll hold you close as the fireworks burst overhead and make a wish for us.  Here’s what I have in mind:</p>
+            <ul>
+                <li>Cozy horse‑drawn wagon rides and a petting farm with pony rides【459909610001931†L71-L77】.</li>
+                <li>Live music, tasty food trucks, a heated beer tent, winter games and crafts【459909610001931†L71-L77】.</li>
+                <li>Sledding hill and an illuminated walking path【459909610001931†L71-L77】.</li>
+                <li>A dazzling fireworks finale at 8 PM【459909610001931†L71-L77】.</li>
+                <li>This free event requires no registration【459909610001931†L69-L70】, so all we need is ourselves and warm clothes.</li>
+            </ul>
+            <p style="font-size:0.85rem;color:#666;">Let’s make memories together at this charming outdoor celebration【92090508085516†L30-L64】.</p>
+        </div>
+    </div>
+    <!-- Dinner modal -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal2')">×</span>
+            <img src="6f13b580-b49c-4ba2-a62a-8337415779f1.png" alt="Romantic Dinner" />
+            <h3>Romantic Dinner</h3>
+            <p>After our fun night out, I’ll whisk you away to a cosy restaurant I’ve picked out just for us.  Whether it’s your favorite Italian spot, a warm steakhouse or a quiet café, we’ll share plates and clink glasses while we talk about our adventures.  I chose this place because I know how you smile when we share a plate — it’s the perfect moment to tell you how much you mean to me.</p>
+        </div>
+    </div>
+    <!-- Winter Park modal -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal3')">×</span>
+            <img src="1f2ccacd-d794-4e64-98dd-8e13e1c3010b.png" alt="Bowers Farm Winter Park" />
+            <h3>Bowers Farm Winter Park</h3>
+            <p><strong>Dates:</strong> Jan 9 – Mar 1 2026 (we can go on February 15)</p>
+            <p><strong>Hours:</strong> Fridays 4 – 9 PM; Saturdays & Sundays 2 – 9 PM【888398645173428†L227-L233】</p>
+            <p>I thought we could spend part of our Sunday exploring this magical winter park together.  I can’t wait to watch you laugh as we fly down the hill and warm up by the crackling fire.  Here’s what awaits us:</p>
+            <ul>
+                <li>Slide down the illuminated tubing hill hand in hand【888398645173428†L209-L236】.</li>
+                <li>Warm up by the fire, roast s’mores and sip hot cocoa【888398645173428†L219-L225】.</li>
+                <li>Climb the haystack, pet friendly farm animals and browse the farm store【888398645173428†L221-L223】.</li>
+                <li>Admission is free; tubing tickets are only $17【888398645173428†L235-L236】.</li>
+            </ul>
+            <p style="font-size:0.85rem;color:#666;">I can’t wait to hold your hand as we take in the lights and laugh down the hill【888398645173428†L209-L236】.</p>
+        </div>
+    </div>
+    <!-- Breakfast modal -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal4')">×</span>
+            <img src="356a055c-bc51-47d6-88ed-5ff9d5dc7d0d.png" alt="Breakfast in Bed" />
+            <h3>Breakfast in Bed</h3>
+            <p>I’ll slip out early to cook your favorites — fluffy pancakes with berries, eggs, bacon and hot coffee — served on a tray with a single rose.  You deserve the sweetest start to our day, and I love spoiling you and starting our morning slowly, just the two of us.</p>
+        </div>
+    </div>
+    <!-- Facial modal -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal5')">×</span>
+            <img src="3d138db7-93fa-473f-9e1d-d4a9e9b33f2a.png" alt="Relaxing Facial" />
+            <h3>Relaxing Facial</h3>
+            <p>You deserve to be pampered, so I’ve booked a rejuvenating spa facial for you.  Skilled aestheticians will spoil you with a nourishing mask, soothing massage and the calmest of atmospheres.  I hope you feel cherished and adored — I’ll be waiting with a smile when you’re finished.</p>
+        </div>
+    </div>
+    <!-- Shopping modal -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal6')">×</span>
+            <img src="f5707c04-c1a1-46b2-a7c8-787cebddc0a5.png" alt="Shopping Spree" />
+            <h3>Shopping Spree</h3>
+            <p>Let’s wander through your favorite shops, from cute boutiques to your go‑to mall spots.  We can laugh, carry bags and maybe find something special to remind us of this weekend forever.  I love exploring life’s little joys with you.</p>
+        </div>
+    </div>
+    <!-- Movie & Dinner modal -->
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal7')">×</span>
+            <img src="6f13b580-b49c-4ba2-a62a-8337415779f1.png" alt="Movie and Dinner" />
+            <h3>Movie &amp; Dinner</h3>
+            <p>To finish our romantic weekend, we’ll snuggle up at the movies — your head on my shoulder, popcorn between us, soft whispers and silly giggles — then share one more delicious meal together.  There’s nowhere else I’d rather be.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>All event information sourced from Oakland County Times, LittleGuide Detroit, and Pure Michigan sites【459909610001931†L71-L77】【92090508085516†L30-L64】【888398645173428†L209-L236】.</p>
+        <p>Made with love by your Valentine’s planner.</p>
+    </footer>
+
+    <script>
+        // Functions to open and close modals
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(function(modal) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
